@@ -8,34 +8,32 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
-@Table(name = "productos")
 @Entity
+@Table(name = "pedidos_detalle")
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductoEntity {
+public class PedidoDetalleEntity {
 
     @Id
     @GeneratedValue(generator = "uuid2")
     @UuidGenerator(style = UuidGenerator.Style.RANDOM)
     private UUID id;
 
-    private String nombre;
+    @ManyToOne
+    @JoinColumn(name = "pedido_cabecera_id", nullable = false)
+    private PedidoCabeceraEntity pedido;
 
-    @Column(name = "descripcion_corta")
-    private String descripcionCorta;
+    @ManyToOne
+    @JoinColumn(name = "producto_id", nullable = false)
+    private ProductoEntity producto;
 
-    @Column(name = "descripcion_larga")
-    private String descripcionLarga;
+    private Integer cantidad;
 
     @Column(name = "precio_unitario")
     private BigDecimal precioUnitario;
 
-    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<PedidoDetalleEntity> detalles = new ArrayList<>();
 }

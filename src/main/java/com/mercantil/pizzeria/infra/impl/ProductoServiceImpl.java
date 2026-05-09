@@ -3,6 +3,7 @@ package com.mercantil.pizzeria.infra.impl;
 import com.mercantil.pizzeria.core.model.Producto;
 import com.mercantil.pizzeria.core.model.ProductoRepository;
 import com.mercantil.pizzeria.infra.database.entity.ProductoEntity;
+import com.mercantil.pizzeria.infra.database.mapper.MapperInfraProducto;
 import com.mercantil.pizzeria.infra.database.repository.ProductoJPARepository;
 import com.mercantil.pizzeria.infra.exception.ProductoNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -17,19 +18,20 @@ import java.util.UUID;
 public class ProductoServiceImpl implements ProductoRepository {
 
     private final ProductoJPARepository productoJPARepository;
+    private final MapperInfraProducto productoMapper;
 
     @Override
     public Producto crearProducto(Producto producto) {
-        ProductoEntity productoCreado = productoJPARepository.save(ProductoEntity.toEntity(producto));
+        ProductoEntity productoCreado = productoJPARepository.save(productoMapper.toEntity(producto));
         log.info("Se creo el producto con id: {}", productoCreado.getId());
-        return ProductoEntity.toDomain(productoCreado);
+        return productoMapper.toDomain(productoCreado);
     }
 
     @Override
     public Producto obtenerProducto(UUID id) {
         ProductoEntity productoBuscado = productoJPARepository.findById(id)
                 .orElseThrow(() -> new ProductoNotFoundException("Producto con id: " + id + "no encontrado"));
-        return ProductoEntity.toDomain(productoBuscado);
+        return productoMapper.toDomain(productoBuscado);
     }
 
     @Override

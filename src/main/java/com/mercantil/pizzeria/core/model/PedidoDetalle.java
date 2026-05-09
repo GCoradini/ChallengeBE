@@ -10,16 +10,13 @@ import java.util.UUID;
 @Builder
 @Getter
 @Setter
-public class Producto {
+public class PedidoDetalle {
 
     private UUID id;
 
-    private String nombre;
+    private Producto producto;
 
-    private String descripcionCorta;
-
-    private String descripcionLarga;
+    private Integer cantidad;
 
     private BigDecimal precioUnitario;
-
 }

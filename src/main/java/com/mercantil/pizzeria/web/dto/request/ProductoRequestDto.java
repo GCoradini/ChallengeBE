@@ -3,6 +3,8 @@ package com.mercantil.pizzeria.web.dto.request;
 import lombok.Data;
 import lombok.Getter;
 
+import java.math.BigDecimal;
+
 @Getter
 @Data
 public class ProductoRequestDto {
@@ -13,6 +15,6 @@ public class ProductoRequestDto {
 
     private String descripcionLarga;
 
-    private Double precioUnitario;
+    private BigDecimal precioUnitario;
 
 }
