@@ -23,7 +23,7 @@ public class PedidosController {
     private final MapperWebPedido mapperWebPedido;
 
     @PostMapping
-    public ResponseEntity<PedidoResponseDto> crearPedido(@RequestBody PedidoRequestDto pedidoRequestDto) {
+    public ResponseEntity<PedidoResponseDto> crearPedido(@Valid @RequestBody PedidoRequestDto pedidoRequestDto) {
         Pedido pedido = mapperWebPedido.toDomain(pedidoRequestDto);
         Pedido pedidoCreado = pedidoRepository.crearPedido(pedido);
 
