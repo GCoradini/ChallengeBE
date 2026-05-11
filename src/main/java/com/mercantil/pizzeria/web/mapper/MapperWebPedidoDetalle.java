@@ -6,7 +6,6 @@ import com.mercantil.pizzeria.web.dto.request.DetalleRequestDto;
 import com.mercantil.pizzeria.web.dto.response.DetallePedidoResponseDto;
 import org.springframework.stereotype.Component;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class MapperWebPedidoDetalle {
@@ -23,7 +22,7 @@ public class MapperWebPedidoDetalle {
     public List<DetallePedidoResponseDto> toDto(List<PedidoDetalle> pedidoDetalleList) {
         return pedidoDetalleList.stream()
                 .map(this::toDto)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public PedidoDetalle toDomain(DetalleRequestDto pedidoRequestDto) {
@@ -41,7 +40,7 @@ public class MapperWebPedidoDetalle {
     public List<PedidoDetalle> toDomain(List<DetalleRequestDto> detalleRequestDtoList) {
         return detalleRequestDtoList.stream()
                 .map(this::toDomain)
-                .collect(Collectors.toList());
+                .toList();
     }
 
 }

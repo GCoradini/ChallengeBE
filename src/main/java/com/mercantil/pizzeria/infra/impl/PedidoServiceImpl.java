@@ -5,7 +5,6 @@ import com.mercantil.pizzeria.core.model.Pedido;
 import com.mercantil.pizzeria.core.model.PedidoDetalle;
 import com.mercantil.pizzeria.core.model.PedidoRepository;
 import com.mercantil.pizzeria.infra.database.entity.PedidoCabeceraEntity;
-import com.mercantil.pizzeria.infra.database.entity.PedidoDetalleEntity;
 import com.mercantil.pizzeria.infra.database.entity.ProductoEntity;
 import com.mercantil.pizzeria.infra.database.mapper.MapperInfraPedidoCabecera;
 import com.mercantil.pizzeria.infra.database.mapper.MapperInfraPedidoDetalle;
@@ -42,7 +41,7 @@ public class PedidoServiceImpl implements PedidoRepository {
 
         List<PedidoDetalle> pedidoDetalles = obtenerDetalleProductos(pedido.getPedidoDetalles());
 
-        Boolean aplicaDescuento = pedido.verificarSiAplicaDescuento();
+        boolean aplicaDescuento = pedido.verificarSiAplicaDescuento();
         BigDecimal montoTotal = calcularMontoTotal(pedidoDetalles);
 
         Pedido pedidoACrear = Pedido.builder()
@@ -73,7 +72,7 @@ public class PedidoServiceImpl implements PedidoRepository {
     private List<PedidoDetalle> obtenerDetalleProductos(List<PedidoDetalle> pedidoDetalles) {
         List<UUID> productoIds = pedidoDetalles.stream()
                 .map(detalle -> detalle.getProducto().getId())
-                .collect(Collectors.toList());
+                .toList();
 
         Map<UUID, ProductoEntity> productosMap = productoJPARepository.findAllById(productoIds)
                 .stream()
@@ -93,7 +92,7 @@ public class PedidoServiceImpl implements PedidoRepository {
                             .precioUnitario(productoEntity.getPrecioUnitario())
                             .build();
                 })
-                .collect(Collectors.toList());
+                .toList();
     }
 
     private BigDecimal calcularMontoTotal(List<PedidoDetalle> pedidoDetalles) {
