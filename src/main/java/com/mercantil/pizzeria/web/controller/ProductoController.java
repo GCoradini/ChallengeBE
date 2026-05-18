@@ -15,7 +15,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/productos")
 @AllArgsConstructor
-public class ProductosController {
+public class ProductoController {
 
     private final ProductoRepository productoRepository;
     private final MapperWebProducto mapperWebProducto;

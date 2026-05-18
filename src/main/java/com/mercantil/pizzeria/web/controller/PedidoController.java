@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/pedidos")
 @AllArgsConstructor
-public class PedidosController {
+public class PedidoController {
 
     private final PedidoRepository pedidoRepository;
     private final MapperWebPedido mapperWebPedido;

@@ -2,12 +2,15 @@ package com.mercantil.pizzeria.web.dto.request;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
-import lombok.Data;
-import lombok.Getter;
+import lombok.*;
+
 import java.util.UUID;
 
 @Getter
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class DetalleRequestDto {
 
     @NotNull(message = "El id del producto no puede ser nulo")

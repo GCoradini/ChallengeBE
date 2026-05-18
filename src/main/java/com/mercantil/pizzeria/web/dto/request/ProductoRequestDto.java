@@ -1,12 +1,14 @@
 package com.mercantil.pizzeria.web.dto.request;
 
-import lombok.Data;
-import lombok.Getter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
 @Getter
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProductoRequestDto {
 
     private String nombre;
