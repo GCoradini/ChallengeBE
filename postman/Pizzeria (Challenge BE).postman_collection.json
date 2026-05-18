@@ -1,0 +1,197 @@
+{
+  "info": {
+    "_postman_id": "3dc5b8f1-dd52-4b8f-9604-90299158b547",
+    "name": "Pizzeria (Challenge BE)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "12831348"
+  },
+  "item": [
+    {
+      "name": "/productos",
+      "item": [
+        {
+          "name": "Get Producto",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/productos/:id_producto",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "productos",
+                ":id_producto"
+              ],
+              "variable": [
+                {
+                  "key": "id_producto",
+                  "value": "f444d3ac-8ab8-4137-82f5-b21a84c85d5d"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Post producto",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nombre\": \"Pizza\",\r\n    \"descripcion_corta\": \"Pizza de muzzarella\",\r\n    \"descripcion_larga\": \"Es una pizza grande de muzzarella\",\r\n    \"precio_unitario\": 12000\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/productos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "productos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete producto",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/productos/:id_producto",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "productos",
+                ":id_producto"
+              ],
+              "variable": [
+                {
+                  "key": "id_producto",
+                  "value": "f444d3ac-8ab8-4137-82f5-b21a84c85d5d"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar Producto",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nombre\": \"Pizza actualizada\",\r\n    \"descripcion_corta\": \"Pizza de muzzarella actualizada\",\r\n    \"descripcion_larga\": \"Es una pizza grande de muzzarella actualizada\",\r\n    \"precio_unitario\": 18000\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/productos/:id_producto",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "productos",
+                ":id_producto"
+              ],
+              "variable": [
+                {
+                  "key": "id_producto",
+                  "value": "43aae7df-d1e5-4f5b-b189-085ce97aa764"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "/pedidos",
+      "item": [
+        {
+          "name": "Crear pedido",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"direccion\": \"Calle falsa 123\",\r\n    \"email\": \"emailDePrueba@gmail.com\",\r\n    \"telefono\": \"1122334455\",\r\n    \"horario\": \"21:00\",\r\n    \"detalle\": [\r\n        {\r\n            \"producto\": \"89efb206-2aa6-4e21-8a23-5765e3de1f31\",\r\n            \"cantidad\": 1\r\n        },\r\n        {\r\n            \"producto\": \"7a9b8c2d-3e4f-5a6b-7c8d-9e0f1a2b3c4d\",\r\n            \"cantidad\": 1\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/pedidos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pedidos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener pedido por fecha",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/pedidos?fecha=2026-05-10",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pedidos"
+              ],
+              "query": [
+                {
+                  "key": "fecha",
+                  "value": "2026-05-10"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
